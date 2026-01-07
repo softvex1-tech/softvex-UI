@@ -81,17 +81,17 @@ function ContactFormComponent() {
     <form action={formAction} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" {...register('name')} />
+        <Input id="name" {...register('name')} placeholder="Enter your full name" />
         {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
       </div>
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" {...register('email')} />
+        <Input id="email" type="email" {...register('email')} placeholder="Enter your email address" />
         {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
       </div>
       <div className="space-y-2">
         <Label htmlFor="phone">Phone Number</Label>
-        <Input id="phone" type="tel" {...register('phone')} />
+        <Input id="phone" type="tel" {...register('phone')} placeholder="Enter your phone number" />
         {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
       </div>
       <div className="space-y-2">
@@ -117,7 +117,7 @@ function ContactFormComponent() {
 
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" {...register('message')} rows={4} />
+        <Textarea id="message" {...register('message')} rows={4} placeholder="How can we help you?" />
         {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
       </div>
       

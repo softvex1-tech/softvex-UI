@@ -70,13 +70,13 @@ export function CareerForm() {
     <form action={formAction} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="name">Full Name</Label>
-        <Input id="name" {...register('name')} />
+        <Input id="name" {...register('name')} placeholder="Enter your full name" />
         {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="email">Email Address</Label>
-        <Input id="email" type="email" {...register('email')} />
+        <Input id="email" type="email" {...register('email')} placeholder="Enter your email address" />
         {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
       </div>
       
