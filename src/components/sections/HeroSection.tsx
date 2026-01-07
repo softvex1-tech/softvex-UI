@@ -39,7 +39,7 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <div className="relative hidden h-full min-h-[400px] w-full items-center justify-center lg:flex">
+        <div className="relative h-full min-h-[400px] w-full flex items-center justify-center">
           <FloatingShapes />
         </div>
       </div>
