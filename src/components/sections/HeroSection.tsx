@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { FloatingShapes } from './FloatingShapes';
+import Image from 'next/image';
 
 export function HeroSection() {
   return (
@@ -40,7 +40,14 @@ export function HeroSection() {
           </div>
         </div>
         <div className="relative h-full min-h-[400px] w-full flex items-center justify-center">
-          <FloatingShapes />
+          <Image
+            src="https://picsum.photos/seed/hero/600/400"
+            alt="Hero Image"
+            width={600}
+            height={400}
+            className="rounded-lg shadow-xl"
+            data-ai-hint="abstract technology"
+          />
         </div>
       </div>
     </section>
