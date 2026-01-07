@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils';
 export default function AboutPage() {
   const { ref: missionRef, inView: missionInView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const { ref: visionRef, inView: visionInView } = useInView({ triggerOnce: true, threshold: 0.3 });
-  const { ref: imageRef, inView: imageInView } = useInView({ triggerOnce: true, threshold: 0.3 });
   
   return (
     <div className="container mx-auto py-16 md:py-24 overflow-hidden">
@@ -24,8 +23,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 mb-24">
-        <div className="order-2 lg:order-1 space-y-8">
+      <div className="max-w-3xl mx-auto mb-24">
+        <div className="space-y-8">
             <div 
               ref={missionRef}
               className={cn(
@@ -62,21 +61,6 @@ export default function AboutPage() {
                 To be a leading digital partner, recognized for our innovation and quality. We envision a world where technology seamlessly extends human potential, and we strive to be at the forefront of that evolution.
               </p>
             </div>
-        </div>
-        <div 
-          ref={imageRef}
-          className={cn(
-            "order-1 lg:order-2 transition-all duration-700",
-            imageInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          )}
-          style={{ transitionDelay: '0.3s' }}
-        >
-          <img
-            src="https://picsum.photos/seed/aboutus/600/500"
-            alt="Team working together"
-            className="rounded-lg shadow-lg"
-            data-ai-hint="team collaboration"
-          />
         </div>
       </div>
       
