@@ -19,10 +19,10 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
         <path fill="#7DBAD2" d="M50 8.35L91.65 50 50 50z"/>
         <path fill="#2E86A4" d="M8.35 50L50 91.65 50 50z"/>
         <path fill="#5DA4CB" d="M91.65 50L50 91.65 50 50z"/>
-        <path fill="#222A3F" d="M50 30L30 50 50 70 70 50z" />
-        <path fill="#85D5E1" d="M50 41L41 50 50 59 59 50z" />
+        <path fill="hsl(var(--foreground))" d="M50 30L30 50 50 70 70 50z" />
+        <path fill="hsl(var(--primary))" d="M50 41L41 50 50 59 59 50z" />
       </svg>
-      <span className="text-2xl font-bold tracking-tight" style={{ color: '#222A3F' }}>
+      <span className="text-2xl font-bold tracking-tight text-foreground">
         softvex
       </span>
     </div>
