@@ -23,7 +23,12 @@ export function HeroSection() {
         <div className="space-y-6 col-span-1">
           <h1 className="font-headline text-4xl font-black tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="text-reveal-wrapper pb-2">
-              <span className="text-reveal">Softvex: Digital Solutions That</span>
+              <span className="text-reveal">Softvex</span>
+            </span>
+            <span className="text-reveal-wrapper pb-2">
+              <span className="text-reveal" style={{ animationDelay: '0.1s' }}>
+                Digital Solutions That
+              </span>
             </span>
             <span className="text-reveal-wrapper pb-2">
               <span
