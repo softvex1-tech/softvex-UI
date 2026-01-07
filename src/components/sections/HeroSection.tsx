@@ -27,7 +27,7 @@ export function HeroSection() {
             </span>
             <span className="text-reveal-wrapper pb-2">
               <span
-                className="text-reveal bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                className="text-reveal text-glass bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
                 style={{ animationDelay: '0.2s' }}
               >
                 Power Your Growth
