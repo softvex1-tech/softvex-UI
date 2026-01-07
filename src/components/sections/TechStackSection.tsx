@@ -2,24 +2,24 @@ import { cn } from '@/lib/utils';
 import { SiReact, SiNodedotjs, SiFirebase, SiMongodb, SiGooglecloud, SiAmazon, SiFlutter, SiWordpress } from 'react-icons/si';
 
 const technologies = [
-  { icon: SiReact, name: 'React', size: 'h-10 w-10' },
-  { icon: SiNodedotjs, name: 'Node.js', size: 'h-10 w-10' },
-  { icon: SiFirebase, name: 'Firebase', size: 'h-10 w-10' },
-  { icon: SiMongodb, name: 'MongoDB', size: 'h-10 w-10' },
-  { icon: SiGooglecloud, name: 'Google Cloud', size: 'h-10 w-10' },
-  { icon: SiAmazon, name: 'AWS', size: 'h-10 w-10' },
-  { icon: SiFlutter, name: 'Flutter', size: 'h-10 w-10' },
-  { icon: SiWordpress, name: 'WordPress', size: 'h-10 w-10' },
+  { icon: SiReact, name: 'React', size: 'h-10 w-10', color: '#61DAFB' },
+  { icon: SiNodedotjs, name: 'Node.js', size: 'h-10 w-10', color: '#339933' },
+  { icon: SiFirebase, name: 'Firebase', size: 'h-10 w-10', color: '#FFCA28' },
+  { icon: SiMongodb, name: 'MongoDB', size: 'h-10 w-10', color: '#47A248' },
+  { icon: SiGooglecloud, name: 'Google Cloud', size: 'h-10 w-10', color: '#4285F4' },
+  { icon: SiAmazon, name: 'AWS', size: 'h-10 w-10', color: '#FF9900' },
+  { icon: SiFlutter, name: 'Flutter', size: 'h-10 w-10', color: '#02569B' },
+  { icon: SiWordpress, name: 'WordPress', size: 'h-10 w-10', color: '#21759B' },
 ];
 
-function TechIcon({ icon: Icon, name, size, style }: { icon: React.ElementType, name: string, size: string, style: React.CSSProperties }) {
+function TechIcon({ icon: Icon, name, size, style, color }: { icon: React.ElementType, name: string, size: string, style: React.CSSProperties, color: string }) {
   return (
     <div
       className="absolute flex h-24 w-24 items-center justify-center rounded-full glass-card"
       style={style}
     >
       <div className="group relative">
-        <Icon className={cn(size, 'text-foreground/80')} />
+        <Icon className={cn(size)} style={{ color }} />
         <span className="absolute -top-8 left-1/2 -translate-x-1/2 rounded-md bg-popover px-2 py-1 text-sm font-medium text-popover-foreground opacity-0 transition-opacity group-hover:opacity-100">
           {name}
         </span>
@@ -48,6 +48,7 @@ export function TechStackSection() {
               icon={tech.icon}
               name={tech.name}
               size={tech.size}
+              color={tech.color}
               style={{
                 animation: `orbit 20s linear infinite`,
                 animationDelay: `${index * (20 / technologies.length)}s`,
