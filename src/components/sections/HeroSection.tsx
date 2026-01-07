@@ -7,7 +7,18 @@ export function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden py-24 md:py-32 lg:py-40">
        <div className="absolute inset-0 z-0 animated-gradient bg-gradient-to-br from-primary/20 via-background to-accent/20"></div>
-
+      <div
+        className="blob -left-1/4 -top-1/4 h-96 w-96 bg-primary/40 [--tw-translate-x:100%] [--tw-translate-y:50%] [--tw-scale-x:1.5]"
+        style={{ animationDuration: '40s' }}
+      ></div>
+      <div
+        className="blob -right-1/4 bottom-0 h-[30rem] w-[30rem] rounded-full bg-accent/40 [--tw-translate-x:-100%] [--tw-translate-y:-50%] [--tw-scale-x:1.2]"
+        style={{ animationDuration: '30s', animationDelay: '5s' }}
+      ></div>
+      <div
+        className="blob left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 bg-primary/30 [--tw-translate-x:50%] [--tw-translate-y:-100%] [--tw-scale-x:1.1]"
+        style={{ animationDuration: '50s', animationDelay: '10s' }}
+      ></div>
       <div className="container relative mx-auto grid grid-cols-1 items-center gap-12 text-center">
         <div className="space-y-6 col-span-1">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
