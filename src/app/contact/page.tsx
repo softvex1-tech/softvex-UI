@@ -34,8 +34,8 @@ export default function ContactPage() {
                 <div className="flex items-start gap-4">
                     <MapPin className="h-6 w-6 text-primary mt-1"/>
                     <div>
-                        <h3 className="font-semibold text-foreground">Main Office</h3>
-                        <p>123 Tech Park, Silicon Valley, Bengaluru, India</p>
+                        <h3 className="font-semibold text-foreground">Address</h3>
+                        <p>Bandra, Mumbai, Maharashtra</p>
                     </div>
                 </div>
             </div>
