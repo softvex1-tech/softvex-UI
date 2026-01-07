@@ -1,7 +1,7 @@
 'use client';
 import { ContactForm } from './ContactForm';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { LaptopAnimation } from '@/components/ui/LaptopAnimation';
+import { AmazingFactWindow } from '@/components/ui/AmazingFactWindow';
 
 export default function ContactPage() {
   return (
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 </div>
             </div>
             <div className="pt-8 flex justify-center">
-              <LaptopAnimation />
+              <AmazingFactWindow />
             </div>
         </div>
       </div>
