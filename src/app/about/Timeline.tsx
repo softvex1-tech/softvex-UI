@@ -1,33 +1,33 @@
 'use client';
 
-import { Award, Rocket, Sparkles, Building2 } from 'lucide-react';
+import { ClipboardList, DraftingCompass, Code, Rocket } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 
 const timelineEvents = [
   {
+    icon: <ClipboardList className="h-6 w-6 text-white" />,
+    date: 'Step 1',
+    title: 'Discovery & Planning',
+    description: 'We start by understanding your vision, goals, and requirements to create a detailed project roadmap.',
+  },
+  {
+    icon: <DraftingCompass className="h-6 w-6 text-white" />,
+    date: 'Step 2',
+    title: 'Design & Prototyping',
+    description: 'Our team designs intuitive UI/UX and creates interactive prototypes to visualize the end product.',
+  },
+  {
+    icon: <Code className="h-6 w-6 text-white" />,
+    date: 'Step 3',
+    title: 'Development & Testing',
+    description: 'We build the application using agile methodology and conduct rigorous testing to ensure quality.',
+  },
+  {
     icon: <Rocket className="h-6 w-6 text-white" />,
-    date: '2020',
-    title: 'The Genesis',
-    description: 'Softvex was founded with a mission to revolutionize the digital landscape through innovative solutions.',
-  },
-  {
-    icon: <Sparkles className="h-6 w-6 text-white" />,
-    date: '2021',
-    title: 'First Major Project',
-    description: 'Successfully launched a large-scale enterprise ERP system, marking our arrival in the industry.',
-  },
-  {
-    icon: <Building2 className="h-6 w-6 text-white" />,
-    date: '2022',
-    title: 'Office Expansion',
-    description: 'Moved into our new headquarters to accommodate our growing team of passionate tech experts.',
-  },
-  {
-    icon: <Award className="h-6 w-6 text-white" />,
-    date: '2024',
-    title: 'Industry Recognition',
-    description: 'Awarded "Most Innovative Digital Agency" for our groundbreaking work in mobile app development.',
+    date: 'Step 4',
+    title: 'Deployment & Support',
+    description: 'We handle the launch and provide ongoing support to ensure smooth operation and future growth.',
   },
 ];
 
@@ -87,7 +87,7 @@ export function Timeline() {
   return (
     <div className="mt-24 md:mt-32">
       <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-16">
-        Our Journey
+        How We Work
       </h2>
       <div className="relative w-full max-w-4xl mx-auto">
         <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-border rounded-full"></div>
