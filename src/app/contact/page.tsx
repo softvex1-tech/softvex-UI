@@ -1,7 +1,7 @@
 'use client';
 import { ContactForm } from './ContactForm';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { Cube } from '@/components/ui/3d-cube';
+import { LaptopAnimation } from '@/components/ui/LaptopAnimation';
 
 export default function ContactPage() {
   return (
@@ -46,8 +46,8 @@ export default function ContactPage() {
                     </div>
                 </div>
             </div>
-            <div className="pt-8">
-              <Cube />
+            <div className="pt-8 flex justify-center">
+              <LaptopAnimation />
             </div>
         </div>
       </div>
