@@ -2,31 +2,15 @@ import { cn } from '@/lib/utils';
 import { SiReact, SiNodedotjs, SiFirebase, SiMongodb, SiGooglecloud, SiAmazon, SiFlutter, SiWordpress } from 'react-icons/si';
 
 const technologies = [
-  { icon: SiReact, name: 'React', size: 'h-10 w-10', color: '#61DAFB' },
-  { icon: SiNodedotjs, name: 'Node.js', size: 'h-10 w-10', color: '#339933' },
-  { icon: SiFirebase, name: 'Firebase', size: 'h-10 w-10', color: '#FFCA28' },
-  { icon: SiMongodb, name: 'MongoDB', size: 'h-10 w-10', color: '#47A248' },
-  { icon: SiGooglecloud, name: 'Google Cloud', size: 'h-10 w-10', color: '#4285F4' },
-  { icon: SiAmazon, name: 'AWS', size: 'h-10 w-10', color: '#FF9900' },
-  { icon: SiFlutter, name: 'Flutter', size: 'h-10 w-10', color: '#02569B' },
-  { icon: SiWordpress, name: 'WordPress', size: 'h-10 w-10', color: '#21759B' },
+  { icon: SiReact, name: 'React', color: '#61DAFB' },
+  { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
+  { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
+  { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+  { icon: SiGooglecloud, name: 'Google Cloud', color: '#4285F4' },
+  { icon: SiAmazon, name: 'AWS', color: '#FF9900' },
+  { icon: SiFlutter, name: 'Flutter', color: '#02569B' },
+  { icon: SiWordpress, name: 'WordPress', color: '#21759B' },
 ];
-
-function TechIcon({ icon: Icon, name, size, style, color }: { icon: React.ElementType, name: string, size: string, style: React.CSSProperties, color: string }) {
-  return (
-    <div
-      className="absolute flex h-24 w-24 items-center justify-center rounded-full glass-card"
-      style={style}
-    >
-      <div className="group relative">
-        <Icon className={cn(size)} style={{ color }} />
-        <span className="absolute -top-8 left-1/2 -translate-x-1/2 rounded-md bg-popover px-2 py-1 text-sm font-medium text-popover-foreground opacity-0 transition-opacity group-hover:opacity-100">
-          {name}
-        </span>
-      </div>
-    </div>
-  );
-}
 
 export function TechStackSection() {
   return (
@@ -40,21 +24,18 @@ export function TechStackSection() {
             We use cutting-edge technologies to build robust and scalable solutions.
           </p>
         </div>
-        <div className="relative flex h-96 items-center justify-center">
-          <div className="absolute h-1 w-1 rounded-full bg-primary/50 shadow-[0_0_80px_40px_hsl(var(--primary))]"></div>
-           {technologies.map((tech, index) => (
-            <TechIcon
-              key={tech.name}
-              icon={tech.icon}
-              name={tech.name}
-              size={tech.size}
-              color={tech.color}
-              style={{
-                animation: `orbit 20s linear infinite`,
-                animationDelay: `${index * (20 / technologies.length)}s`,
-              }}
-            />
-          ))}
+        <div className="tech-scroller w-full overflow-hidden">
+          <div className="tech-scroller-inner flex w-max gap-16 py-4">
+            {[...technologies, ...technologies].map((tech, index) => (
+              <div key={index} className="group relative flex flex-col items-center justify-center gap-2">
+                <tech.icon className="h-16 w-16 transition-transform duration-300 group-hover:scale-110" style={{ color: tech.color }} />
+                 <span className="text-sm font-medium text-muted-foreground transition-opacity duration-300 group-hover:opacity-0">{tech.name}</span>
+                 <span className="absolute top-full mt-2 rounded-md bg-popover px-2 py-1 text-sm font-medium text-popover-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

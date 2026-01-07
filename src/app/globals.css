@@ -112,6 +112,20 @@
   .scroller:hover .scroller-inner {
     animation-play-state: paused;
   }
+
+  .tech-scroller {
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  }
+  
+  .tech-scroller-inner {
+    animation: tech-scroll 60s linear infinite;
+  }
+
+  .tech-scroller:hover .tech-scroller-inner {
+    animation-play-state: paused;
+  }
+
   .animated-gradient {
     background-size: 200% 200%;
     animation: gradient-animation 15s ease infinite;
@@ -134,6 +148,12 @@
 @keyframes scroll {
   to {
     transform: translateX(calc(-50% - 0.5rem * 6));
+  }
+}
+
+@keyframes tech-scroll {
+  to {
+    transform: translateX(calc(-50% - 2rem * 8));
   }
 }
 
