@@ -21,7 +21,7 @@ export function HeroSection() {
       ></div>
       <div className="container relative mx-auto grid grid-cols-1 items-center gap-12 text-center">
         <div className="space-y-6 col-span-1">
-          <h1 className="font-headline text-4xl font-black tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="font-headline text-4xl font-black tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="text-reveal-wrapper pb-2">
               <span className="text-reveal">Digital Solutions That</span>
             </span>
