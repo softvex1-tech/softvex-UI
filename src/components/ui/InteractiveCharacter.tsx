@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 
 export function InteractiveCharacter() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 1;
@@ -20,6 +22,10 @@ export function InteractiveCharacter() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  if (!isMounted) {
+    return <div className="w-48 h-48 md:w-64 md:h-64" />;
+  }
 
   const headX = mousePosition.x * 10;
   const headY = mousePosition.y * 10;
