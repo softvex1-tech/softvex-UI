@@ -1,6 +1,6 @@
 'use client';
 import { ContactForm } from './ContactForm';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { AmazingFactWindow } from '@/components/ui/AmazingFactWindow';
 
 export default function ContactPage() {
@@ -29,6 +29,13 @@ export default function ContactPage() {
                         <h3 className="font-semibold text-foreground">Email</h3>
                         <a href="mailto:info@softvex.in" className="block hover:text-primary">info@softvex.in</a>
                         <a href="mailto:support@softvex.in" className="block hover:text-primary">support@softvex.in</a>
+                    </div>
+                </div>
+                <div className="flex items-start gap-4">
+                    <Phone className="h-6 w-6 text-primary mt-1"/>
+                    <div>
+                        <h3 className="font-semibold text-foreground">Phone</h3>
+                        <p>+91 12345 67890</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
