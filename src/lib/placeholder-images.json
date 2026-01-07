@@ -48,42 +48,42 @@
       "id": "web-development",
       "title": "Web Development",
       "description": "We build beautiful, responsive, and lightning-fast websites and web applications. Our solutions are engineered for performance, security, and scalability.",
-      "imageUrl": "https://picsum.photos/seed/webdev/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3Njc2OTYzOTF8MA&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "web development"
     },
     {
       "id": "app-development",
       "title": "App Development",
       "description": "Our team creates native and cross-platform mobile applications for iOS and Android that captivate users and drive engagement and ensure your app stands out.",
-      "imageUrl": "https://picsum.photos/seed/appdev/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1633250391894-397930e3f5f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhcHAlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3Njc2ODAxMjh8MA&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "app development"
     },
     {
       "id": "digital-marketing",
       "title": "Digital Marketing",
       "description": "Amplify your online presence with our data-driven digital marketing strategies. We specialize in SEO, PPC, content marketing, and social media management.",
-      "imageUrl": "https://picsum.photos/seed/marketing/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaWdpdGFsJTIwbWFya2V0aW5nfGVufDB8fHx8MTc2NzY3MDk1OHww&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "digital marketing"
     },
     {
       "id": "crm-erp-solutions",
       "title": "CRM & ERP Solutions",
       "description": "Integrate and automate your business processes with our custom CRM and ERP solutions. We help you streamline operations and improve customer engagement.",
-      "imageUrl": "https://picsum.photos/seed/crm/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1573166826272-5acd0ef8f6so?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMHByb2Nlc3N8ZW58MHx8fHwxNzY3NzE3ODkwfDA&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "business process"
     },
     {
       "id": "custom-software",
       "title": "Custom Software",
       "description": "We design and develop bespoke software solutions tailored to your unique business challenges, helping you achieve specific goals and improve efficiency.",
-      "imageUrl": "https://picsum.photos/seed/software/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50fGVufDB8fHx8MTc2NzcyODI5OHww&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "software development"
     },
     {
       "id": "branding-ui-ux",
       "title": "Branding & UI/UX",
       "description": "Our creative team crafts memorable brand identities and designs intuitive, user-friendly interfaces that deliver exceptional experiences and conversions.",
-      "imageUrl": "https://picsum.photos/seed/uidesign/400/300",
+      "imageUrl": "https://images.unsplash.com/photo-1621111848501-8d3634f82336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx1aSUyMGRlc2lnbnxlbnwwfHx8fDE3Njc3NjU4MjJ8MA&ixlib=rb-4.1.0&q=80&w=400",
       "imageHint": "ui design"
     }
   ]
