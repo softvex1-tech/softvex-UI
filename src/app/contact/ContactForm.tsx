@@ -70,7 +70,7 @@ function ContactFormComponent() {
         variant: state.success ? 'default' : 'destructive',
       });
       if (state.success) {
-        reset({ service: undefined, name: '', email: '', phone: '', message: '' });
+        reset({ service: undefined, name: '', email: '', message: '' });
       }
     }
   }, [state, toast, reset]);
@@ -89,11 +89,6 @@ function ContactFormComponent() {
         <Input id="email" type="email" {...register('email')} />
         {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
       </div>
-       <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" type="tel" {...register('phone')} />
-          {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
-        </div>
       
       <div className="space-y-2">
         <Label htmlFor="service">Service of Interest</Label>
