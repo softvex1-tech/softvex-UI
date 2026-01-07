@@ -79,45 +79,40 @@ function ContactFormComponent() {
 
   return (
     <form action={formAction} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" {...register('name')} />
-          {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" {...register('email')} />
-          {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-        </div>
+      <div className="space-y-2">
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" {...register('name')} />
+        {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
       </div>
-      
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number</Label>
-          <Input id="phone" type="tel" {...register('phone')} />
-          {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="service">Service of Interest</Label>
-          <Select 
-            name="service" 
-            value={selectedService}
-            onValueChange={(value) => {
-              setValue('service', value);
-              trigger('service');
-          }}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select a service" />
-            </SelectTrigger>
-            <SelectContent>
-              {services.map(service => (
-                <SelectItem key={service} value={service}>{service}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          {errors.service && <p className="text-sm text-destructive">{errors.service.message}</p>}
-        </div>
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" {...register('email')} />
+        {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="phone">Phone Number</Label>
+        <Input id="phone" type="tel" {...register('phone')} />
+        {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="service">Service of Interest</Label>
+        <Select 
+          name="service" 
+          value={selectedService}
+          onValueChange={(value) => {
+            setValue('service', value);
+            trigger('service');
+        }}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a service" />
+          </SelectTrigger>
+          <SelectContent>
+            {services.map(service => (
+              <SelectItem key={service} value={service}>{service}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {errors.service && <p className="text-sm text-destructive">{errors.service.message}</p>}
       </div>
 
       <div className="space-y-2">
