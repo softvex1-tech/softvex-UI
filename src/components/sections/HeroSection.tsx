@@ -6,16 +6,7 @@ import { ArrowRight } from 'lucide-react';
 export function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden py-24 md:py-32 lg:py-40">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://picsum.photos/seed/hero-bg/1920/1080"
-          alt="Abstract background"
-          fill
-          className="object-cover opacity-30"
-          data-ai-hint="abstract geometric background"
-        />
-        <div className="absolute inset-0 bg-background/70"></div>
-      </div>
+       <div className="absolute inset-0 z-0 animated-gradient bg-gradient-to-br from-primary/20 via-background to-accent/20"></div>
 
       <div className="container relative mx-auto grid grid-cols-1 items-center gap-12 text-center">
         <div className="space-y-6 col-span-1">
