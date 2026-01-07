@@ -63,13 +63,13 @@ export function InteractiveCharacter() {
         </motion.g>
 
         {/* Head */}
-        <motion.g animate={{ x: headX, y: headY }} transition={{ type: 'spring', stiffness: 100, damping: 15, mass: 0.1 }}>
+        <motion.g animate={{ x: headX, y: headY }} transition={{ type: 'spring', stiffness: 120, damping: 20, mass: 0.1 }}>
             <rect x="60" y="30" width="80" height="80" rx="15" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="2" />
             {/* Screen */}
             <rect x="68" y="38" width="64" height="40" rx="5" fill="hsl(210, 40%, 90%)" className="dark:fill-gray-800" />
 
              {/* Eyes */}
-            <motion.g animate={{ x: eyeX, y: eyeY }} transition={{ type: 'spring', stiffness: 50, damping: 10 }}>
+            <motion.g animate={{ x: eyeX, y: eyeY }} transition={{ type: 'spring', stiffness: 80, damping: 15 }}>
                 <circle cx="90" cy="58" r="5" fill="hsl(var(--foreground))" />
                 <circle cx="110" cy="58" r="5" fill="hsl(var(--foreground))" />
                 <circle cx="89" cy="57" r="1.5" fill="white" />
