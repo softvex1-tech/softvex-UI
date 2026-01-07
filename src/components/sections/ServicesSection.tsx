@@ -1,8 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import Autoplay from 'embla-carousel-autoplay';
-
 import {
   Code2,
   Smartphone,
@@ -12,11 +10,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel';
+
 
 const services = [
   {
@@ -58,10 +52,6 @@ const services = [
 ];
 
 export function ServicesSection() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true, stopOnMouseEnter: true })
-  );
-
   return (
     <section id="services" className="w-full py-16 md:py-24 lg:py-32 bg-background/80">
       <div className="container mx-auto px-4 md:px-6">
@@ -74,19 +64,11 @@ export function ServicesSection() {
             business forward.
           </p>
         </div>
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full"
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
-        >
-          <CarouselContent>
-            {services.map((service, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card
+        <div className="scroller w-full overflow-hidden">
+          <div className="scroller-inner flex w-max gap-8 py-4">
+            {[...services, ...services].map((service, index) => (
+              <div key={index} className="w-[350px]">
+                 <Card
                     className="glass-card group h-full text-center hover:-translate-y-2 hover:shadow-2xl"
                   >
                     <CardHeader className="items-center">
@@ -99,11 +81,10 @@ export function ServicesSection() {
                       <p className="text-muted-foreground">{service.description}</p>
                     </CardContent>
                   </Card>
-                </div>
-              </CarouselItem>
+              </div>
             ))}
-          </CarouselContent>
-        </Carousel>
+          </div>
+        </div>
       </div>
     </section>
   );
