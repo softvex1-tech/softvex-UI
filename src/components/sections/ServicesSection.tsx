@@ -10,37 +10,37 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const services = [
   {
-    icon: <Code2 className="h-10 w-10 text-primary" />,
+    icon: <Code2 className="h-10 w-10 text-cyan-500" />,
     title: 'Web Development',
     description:
       'Crafting high-performance, scalable web applications tailored to your business needs.',
   },
   {
-    icon: <Smartphone className="h-10 w-10 text-primary" />,
+    icon: <Smartphone className="h-10 w-10 text-teal-500" />,
     title: 'App Development',
     description:
       'Building intuitive and engaging mobile apps for both iOS and Android platforms.',
   },
   {
-    icon: <TrendingUp className="h-10 w-10 text-primary" />,
+    icon: <TrendingUp className="h-10 w-10 text-sky-500" />,
     title: 'Digital Marketing',
     description:
       'Driving growth and visibility with data-driven SEO, SEM, and social media strategies.',
   },
   {
-    icon: <DatabaseZap className="h-10 w-10 text-primary" />,
+    icon: <DatabaseZap className="h-10 w-10 text-blue-500" />,
     title: 'CRM and ERP Solutions',
     description:
       'Streamlining your business operations with custom CRM and ERP integrations.',
   },
   {
-    icon: <PenTool className="h-10 w-10 text-primary" />,
+    icon: <PenTool className="h-10 w-10 text-indigo-500" />,
     title: 'Custom Software',
     description:
       'Developing bespoke software solutions to solve unique business challenges.',
   },
   {
-    icon: <ShieldCheck className="h-10 w-10 text-primary" />,
+    icon: <ShieldCheck className="h-10 w-10 text-violet-500" />,
     title: 'QA & Testing',
     description:
       'Ensuring your digital products are bug-free, reliable, and performant.',
@@ -67,7 +67,7 @@ export function ServicesSection() {
               className="glass-card group text-center hover:-translate-y-2 hover:shadow-2xl"
             >
               <CardHeader className="items-center">
-                <div className="rounded-full bg-primary/10 p-4 transition-transform duration-300 group-hover:scale-110">
+                <div className="rounded-full bg-card/80 p-4 transition-transform duration-300 group-hover:scale-110">
                   {service.icon}
                 </div>
                 <CardTitle className="font-headline mt-4">{service.title}</CardTitle>
