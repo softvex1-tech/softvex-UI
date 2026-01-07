@@ -83,6 +83,16 @@
     @apply absolute rounded-full opacity-30 mix-blend-hard-light filter blur-3xl;
     animation: float 20s infinite ease-in-out alternate;
   }
+  
+  .radial-gradient {
+    @apply absolute inset-0 -z-10 h-full w-full bg-background;
+    background-image: radial-gradient(
+      circle at 25% 30%,
+      hsl(var(--primary) / 0.15),
+      hsl(var(--accent) / 0.1) 25%,
+      hsl(var(--background)) 50%
+    );
+  }
 }
 
 @keyframes text-reveal {
