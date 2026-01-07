@@ -34,24 +34,21 @@ const timelineEvents = [
 function TimelineItem({ event, index }: { event: (typeof timelineEvents)[0], index: number }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.2,
   });
 
   return (
     <div
       ref={ref}
       className={cn(
-        'flex items-center w-full',
-        index % 2 === 0 ? 'justify-start' : 'justify-end'
+        'flex items-center w-full transition-all duration-700 delay-300',
+        inView ? 'opacity-100' : 'opacity-0',
+        index % 2 === 0 ? 'justify-start' : 'justify-end',
+        inView ? (index % 2 === 0 ? 'translate-x-0' : 'translate-x-0') : (index % 2 === 0 ? '-translate-x-10' : 'translate-x-10')
       )}
     >
       <div className={cn('w-1/2', index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left')}>
-        <div
-          className={cn(
-            'p-6 rounded-lg glass-card transition-all duration-700',
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          )}
-        >
+        <div className="p-6 rounded-lg glass-card">
           <p className="font-bold text-primary mb-1 tracking-wider uppercase">{event.date}</p>
           <h3 className="font-headline text-2xl font-bold mb-2">{event.title}</h3>
           <p className="text-muted-foreground">{event.description}</p>
@@ -73,8 +70,8 @@ function TimelineNode({ index }: { index: number }) {
      <div
       ref={ref}
       className={cn(
-        'absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-all duration-500',
-        inView ? 'scale-100' : 'scale-0'
+        'absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-all duration-500 delay-500',
+        inView ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
       )}
       style={{ top: `calc(${(index / (timelineEvents.length - 1)) * 100}% - 24px)` }}
     >
@@ -93,9 +90,20 @@ function TimelineNode({ index }: { index: number }) {
 
 
 export function Timeline() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <div className="mt-24 md:mt-32">
-      <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-24">
+      <h2 
+        ref={ref}
+        className={cn(
+          'font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-24 transition-all duration-700',
+           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        )}
+      >
         How We Work
       </h2>
       <div className="relative w-full max-w-4xl mx-auto">
