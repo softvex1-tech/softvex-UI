@@ -22,10 +22,10 @@ export function HeroSection() {
       <div className="container relative mx-auto grid grid-cols-1 items-center gap-12 text-center">
         <div className="space-y-6 col-span-1">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="text-reveal-wrapper">
+            <span className="text-reveal-wrapper pb-2">
               <span className="text-reveal">Digital Solutions That</span>
             </span>
-            <span className="text-reveal-wrapper">
+            <span className="text-reveal-wrapper pb-2">
               <span
                 className="text-reveal bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
                 style={{ animationDelay: '0.2s' }}
