@@ -25,7 +25,8 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-primary mt-1"/>
                     <div>
                         <h3 className="font-semibold text-foreground">Email</h3>
-                        <a href="mailto:info@softvex.in" className="hover:text-primary">info@softvex.in</a>
+                        <a href="mailto:info@softvex.in" className="block hover:text-primary">info@softvex.in</a>
+                        <a href="mailto:support@softvex.in" className="block hover:text-primary">support@softvex.in</a>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
