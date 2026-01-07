@@ -1,4 +1,5 @@
 import { Timeline } from './Timeline';
+import { Target, Eye } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -13,18 +14,32 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="font-headline text-3xl font-bold">Our Mission</h2>
-          <p className="text-muted-foreground">
-            Our mission is to empower businesses with transformative technology. We believe in the power of code to solve complex problems, create opportunities, and build a better digital future. We are committed to excellence, collaboration, and pushing the boundaries of what's possible.
-          </p>
-          <h2 className="font-headline text-3xl font-bold pt-4">Our Vision</h2>
-          <p className="text-muted-foreground">
-            To be a leading digital solutions partner, recognized for our innovation, quality, and commitment to client success. We envision a world where technology is a seamless extension of human potential, and we strive to be at the forefront of that evolution.
-          </p>
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 mb-24">
+        <div className="order-2 lg:order-1 space-y-8">
+            <div className="p-8 rounded-lg glass-card">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-primary/10 p-3 rounded-full">
+                  <Target className="h-6 w-6 text-primary" />
+                </div>
+                <h2 className="font-headline text-3xl font-bold">Our Mission</h2>
+              </div>
+              <p className="text-muted-foreground">
+                To empower businesses with transformative technology. We believe in the power of code to solve complex problems, create opportunities, and build a better digital future through excellence and collaboration.
+              </p>
+            </div>
+             <div className="p-8 rounded-lg glass-card">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-accent/10 p-3 rounded-full">
+                    <Eye className="h-6 w-6 text-accent" />
+                </div>
+                <h2 className="font-headline text-3xl font-bold">Our Vision</h2>
+              </div>
+              <p className="text-muted-foreground">
+                To be a leading digital partner, recognized for our innovation and quality. We envision a world where technology seamlessly extends human potential, and we strive to be at the forefront of that evolution.
+              </p>
+            </div>
         </div>
-        <div>
+        <div className="order-1 lg:order-2">
           <img
             src="https://picsum.photos/seed/aboutus/600/500"
             alt="Team working together"
