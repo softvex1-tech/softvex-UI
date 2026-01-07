@@ -5,14 +5,14 @@ import Image from 'next/image';
 export function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden py-24 md:py-32 lg:py-40">
-       <div
+      <div
         className="blob -top-1/4 left-1/4 h-[500px] w-[500px] bg-cyan-400/50"
         style={
           {
             '--tw-translate-x': '100px',
             '--tw-translate-y': '50px',
             '--tw-scale-x': '1.2',
-            animationDuration: '25s'
+            animationDuration: '25s',
           } as React.CSSProperties
         }
       ></div>
@@ -23,20 +23,44 @@ export function HeroSection() {
             '--tw-translate-x': '-80px',
             '--tw-translate-y': '-120px',
             '--tw-scale-x': '1.1',
-             animationDelay: '5s',
-             animationDuration: '30s'
+            animationDelay: '5s',
+            animationDuration: '30s',
           } as React.CSSProperties
         }
       ></div>
-       <div
+      <div
         className="blob top-1/4 right-1/2 h-[300px] w-[300px] bg-blue-400/50"
         style={
           {
             '--tw-translate-x': '120px',
             '--tw-translate-y': '-100px',
             '--tw-scale-x': '0.9',
-             animationDelay: '10s',
-             animationDuration: '35s'
+            animationDelay: '10s',
+            animationDuration: '35s',
+          } as React.CSSProperties
+        }
+      ></div>
+       <div
+        className="blob top-1/2 left-1/3 h-[200px] w-[200px] bg-indigo-400/50"
+        style={
+          {
+            '--tw-translate-x': '-150px',
+            '--tw-translate-y': '80px',
+            '--tw-scale-x': '0.8',
+            animationDelay: '2s',
+            animationDuration: '40s',
+          } as React.CSSProperties
+        }
+      ></div>
+       <div
+        className="blob bottom-1/3 right-1/3 h-[400px] w-[400px] bg-sky-400/50"
+        style={
+          {
+            '--tw-translate-x': '100px',
+            '--tw-translate-y': '-150px',
+            '--tw-scale-x': '1.3',
+            animationDelay: '7s',
+            animationDuration: '28s',
           } as React.CSSProperties
         }
       ></div>
