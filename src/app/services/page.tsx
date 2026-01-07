@@ -4,35 +4,11 @@ import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { servicePlaceholders } from '@/lib/placeholder-images';
 
-const serviceDetails = [
-  {
-    title: 'Web Development',
-    description: 'We build beautiful, responsive, and lightning-fast websites and web applications. Our solutions are engineered for performance, security, and scalability.',
-  },
-  {
-    title: 'App Development',
-    description: 'Our team creates native and cross-platform mobile applications for iOS and Android that captivate users and drive engagement and ensure your app stands out.',
-  },
-  {
-    title: 'Digital Marketing',
-    description: 'Amplify your online presence with our data-driven digital marketing strategies. We specialize in SEO, PPC, content marketing, and social media management.',
-  },
-  {
-    title: 'CRM & ERP Solutions',
-    description: 'Integrate and automate your business processes with our custom CRM and ERP solutions. We help you streamline operations and improve customer engagement.',
-  },
-  {
-    title: 'Custom Software',
-    description: 'We design and develop bespoke software solutions tailored to your unique business challenges, helping you achieve specific goals and improve efficiency.',
-  },
-  {
-    title: 'Branding & UI/UX',
-    description: 'Our creative team crafts memorable brand identities and designs intuitive, user-friendly interfaces that deliver exceptional experiences and conversions.',
-  }
-];
 
-function ServiceCard({ service, index }: { service: typeof serviceDetails[0], index: number }) {
+function ServiceCard({ service, index }: { service: (typeof servicePlaceholders)[0], index: number }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -42,18 +18,30 @@ function ServiceCard({ service, index }: { service: typeof serviceDetails[0], in
     <div
       ref={ref}
       className={cn(
-        'glass-card rounded-lg p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl',
+        'glass-card rounded-lg p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col md:flex-row gap-8 items-center',
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       )}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <h3 className="font-headline text-2xl font-bold mb-4">{service.title}</h3>
-      <p className="text-muted-foreground mb-6">{service.description}</p>
-      <Button variant="link" asChild className="p-0 h-auto">
-        <Link href="/contact">
-          Learn More <ArrowRight className="ml-2 h-4 w-4" />
-        </Link>
-      </Button>
+      <div className="md:w-1/3">
+        <Image
+          src={service.imageUrl}
+          alt={service.description}
+          width={400}
+          height={300}
+          data-ai-hint={service.imageHint}
+          className="rounded-lg object-cover aspect-[4/3]"
+        />
+      </div>
+      <div className="md:w-2/3">
+        <h3 className="font-headline text-2xl font-bold mb-4">{service.title}</h3>
+        <p className="text-muted-foreground mb-6">{service.description}</p>
+        <Button variant="link" asChild className="p-0 h-auto">
+          <Link href="/contact">
+            Learn More <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
@@ -69,9 +57,9 @@ export default function ServicesPage() {
           A deep dive into how we can help your business thrive in the digital age.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {serviceDetails.map((service, index) => (
-          <ServiceCard key={service.title} service={service} index={index} />
+      <div className="grid grid-cols-1 gap-8">
+        {servicePlaceholders.map((service, index) => (
+          <ServiceCard key={service.id} service={service} index={index} />
         ))}
       </div>
     </div>
