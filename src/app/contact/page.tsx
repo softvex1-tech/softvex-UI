@@ -1,5 +1,7 @@
+'use client';
 import { ContactForm } from './ContactForm';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Cube } from '@/components/ui/3d-cube';
 
 export default function ContactPage() {
   return (
@@ -43,6 +45,9 @@ export default function ContactPage() {
                         <p>123 Tech Park, Silicon Valley, Bengaluru, India</p>
                     </div>
                 </div>
+            </div>
+            <div className="pt-8">
+              <Cube />
             </div>
         </div>
       </div>
