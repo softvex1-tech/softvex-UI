@@ -10,7 +10,7 @@ export function InteractiveCharacter() {
     const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       const x = (clientX / window.innerWidth) * 2 - 1;
-      const y = (clientY / window.innerHeight)* 2 - 1;
+      const y = (clientY / window.innerHeight) * 2 - 1;
       setMousePosition({ x, y });
     };
 
@@ -30,8 +30,8 @@ export function InteractiveCharacter() {
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-      className="w-64 h-64"
+      transition={{ duration: 0.8, delay: 1, ease: 'easeOut' }}
+      className="w-48 h-48 md:w-64 md:h-64"
     >
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         {/* Shadow */}
