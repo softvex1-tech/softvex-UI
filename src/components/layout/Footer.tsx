@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border/40 bg-[hsl(215,39%,12%)] text-white">
+    <footer className="w-full border-t border-border/40 bg-[#161C2C] text-white">
       <div className="container mx-auto py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="flex flex-col items-start gap-4">
