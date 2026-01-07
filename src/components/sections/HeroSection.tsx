@@ -5,8 +5,8 @@ import Image from 'next/image';
 export function HeroSection() {
   return (
     <section className="relative w-full py-24 md:py-32 lg:py-40">
-      <div className="container mx-auto grid grid-cols-1 items-center gap-12 text-center lg:grid-cols-2 lg:text-left">
-        <div className="space-y-6">
+      <div className="container mx-auto grid grid-cols-1 items-center gap-12 text-center">
+        <div className="space-y-6 col-span-1">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="text-reveal-wrapper">
               <span className="text-reveal">Building Digital Solutions</span>
@@ -21,14 +21,14 @@ export function HeroSection() {
             </span>
           </h1>
           <p
-            className="fade-in-up max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground md:text-xl"
+            className="fade-in-up max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl"
             style={{ animationDelay: '0.5s' }}
           >
             Web development, mobile apps, and digital marketing under one roof.
             We turn your ideas into high-performance digital products.
           </p>
           <div
-            className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            className="fade-in-up flex flex-col sm:flex-row gap-4 justify-center"
             style={{ animationDelay: '0.7s' }}
           >
             <Button size="lg" asChild>
@@ -38,16 +38,6 @@ export function HeroSection() {
               <Link href="/services">View Our Services</Link>
             </Button>
           </div>
-        </div>
-        <div className="relative h-full min-h-[400px] w-full flex items-center justify-center">
-          <Image
-            src="https://picsum.photos/seed/hero/600/400"
-            alt="Hero Image"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-xl"
-            data-ai-hint="abstract technology"
-          />
         </div>
       </div>
     </section>
