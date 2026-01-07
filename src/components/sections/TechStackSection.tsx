@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { SiReact, SiNodedotjs, SiFirebase, SiMongodb, SiGooglecloud, SiAmazonaws, SiFlutter, SiWordpress } from 'react-icons/si';
+import { SiReact, SiNodedotjs, SiFirebase, SiMongodb, SiGooglecloud, SiAmazon, SiFlutter, SiWordpress } from 'react-icons/si';
 
 const technologies = [
   { icon: SiReact, name: 'React', size: 'h-10 w-10' },
@@ -7,7 +7,7 @@ const technologies = [
   { icon: SiFirebase, name: 'Firebase', size: 'h-10 w-10' },
   { icon: SiMongodb, name: 'MongoDB', size: 'h-10 w-10' },
   { icon: SiGooglecloud, name: 'Google Cloud', size: 'h-10 w-10' },
-  { icon: SiAmazonaws, name: 'AWS', size: 'h-10 w-10' },
+  { icon: SiAmazon, name: 'AWS', size: 'h-10 w-10' },
   { icon: SiFlutter, name: 'Flutter', size: 'h-10 w-10' },
   { icon: SiWordpress, name: 'WordPress', size: 'h-10 w-10' },
 ];
