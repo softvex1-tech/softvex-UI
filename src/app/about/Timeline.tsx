@@ -52,9 +52,9 @@ function TimelineItem({ event, index }: { event: (typeof timelineEvents)[0], ind
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           )}
         >
-          <p className="font-bold text-primary mb-1">{event.date}</p>
-          <h3 className="font-headline text-xl font-bold mb-2">{event.title}</h3>
-          <p className="text-muted-foreground text-sm">{event.description}</p>
+          <p className="font-bold text-primary mb-1 tracking-wider uppercase">{event.date}</p>
+          <h3 className="font-headline text-2xl font-bold mb-2">{event.title}</h3>
+          <p className="text-muted-foreground">{event.description}</p>
         </div>
       </div>
     </div>
@@ -67,17 +67,26 @@ function TimelineNode({ index }: { index: number }) {
     threshold: 0.5,
   });
   const event = timelineEvents[index];
+  const isLastEvent = index === timelineEvents.length - 1;
   
   return (
      <div
       ref={ref}
       className={cn(
-        'absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center border-4 border-background transition-all duration-500',
+        'absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-all duration-500',
         inView ? 'scale-100' : 'scale-0'
       )}
       style={{ top: `calc(${(index / (timelineEvents.length - 1)) * 100}% - 24px)` }}
     >
-      {event.icon}
+      {isLastEvent && (
+         <div className="absolute -top-10 text-center">
+            <div className="font-bold text-primary animate-bounce">Launch!</div>
+            <div className="w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-primary/50 mx-auto"></div>
+        </div>
+      )}
+      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center border-4 border-background">
+        {event.icon}
+      </div>
     </div>
   )
 }
@@ -86,7 +95,7 @@ function TimelineNode({ index }: { index: number }) {
 export function Timeline() {
   return (
     <div className="mt-24 md:mt-32">
-      <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-16">
+      <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-24">
         How We Work
       </h2>
       <div className="relative w-full max-w-4xl mx-auto">
@@ -96,9 +105,11 @@ export function Timeline() {
             <TimelineItem key={index} event={event} index={index} />
           ))}
         </div>
-        {timelineEvents.map((_, index) => (
-            <TimelineNode key={index} index={index} />
-          ))}
+        <div className="relative">
+            {timelineEvents.map((_, index) => (
+                <TimelineNode key={index} index={index} />
+            ))}
+        </div>
       </div>
     </div>
   );
