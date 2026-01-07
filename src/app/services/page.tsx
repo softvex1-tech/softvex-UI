@@ -40,25 +40,25 @@ export default function ServicesPage() {
         </p>
       </div>
       <div className="space-y-24">
-        {serviceDetails.map((service, index) => (
+        {serviceDetails.map((service) => (
           <div
             key={service.title}
-            className={`grid grid-cols-1 items-center gap-12 lg:grid-cols-2 ${index % 2 !== 0 ? 'lg:grid-flow-row-dense' : ''}`}
+            className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2"
           >
-            <div className={`space-y-4 ${index % 2 !== 0 ? 'lg:col-start-2' : ''}`}>
-              <h2 className="font-headline text-3xl font-bold">{service.title}</h2>
-              <p className="text-muted-foreground">{service.description}</p>
-              <Button asChild>
-                <Link href="/contact">Inquire Now</Link>
-              </Button>
-            </div>
-            <div className={`${index % 2 !== 0 ? 'lg:col-start-1' : ''}`}>
+            <div>
               <img
                 src={service.imageUrl}
                 alt={service.title}
                 className="rounded-lg shadow-lg w-full h-auto"
                 data-ai-hint={service.imageHint}
               />
+            </div>
+            <div className="space-y-4">
+              <h2 className="font-headline text-3xl font-bold">{service.title}</h2>
+              <p className="text-muted-foreground">{service.description}</p>
+              <Button asChild>
+                <Link href="/contact">Inquire Now</Link>
+              </Button>
             </div>
           </div>
         ))}
