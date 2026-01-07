@@ -1,9 +1,16 @@
 import Image from 'next/image';
 
-export function Logo() {
+type LogoProps = {
+  src?: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
+export function Logo({ src = "/assets/logo.png", width = 140, height = 32, alt = "Softvex Logo" }: LogoProps) {
   return (
     <div className="flex items-center gap-3">
-      <Image src="/logo.svg" alt="Softvex Logo" width={140} height={32} />
+      <Image src={src} alt={alt} width={width} height={height} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container mx-auto py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="flex flex-col items-start gap-4">
-            <Logo />
+            <Logo src="/assets/logo2.png" />
             <p className="text-sm text-gray-400">
               Building Digital Solutions That Power Your Growth.
             </p>
