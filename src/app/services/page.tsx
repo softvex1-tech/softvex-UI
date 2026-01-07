@@ -37,7 +37,7 @@ function ServiceCard({ service, index }: { service: (typeof servicePlaceholders)
         <h3 className="font-headline text-2xl font-bold mb-4">{service.title}</h3>
         <p className="text-muted-foreground mb-6">{service.description}</p>
         <Button variant="link" asChild className="p-0 h-auto">
-          <Link href="/contact">
+          <Link href={`/contact?service=${encodeURIComponent(service.title)}`}>
             Learn More <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

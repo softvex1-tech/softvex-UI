@@ -5,7 +5,8 @@ import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { contactFormSchema } from '@/lib/schema';
 import { submitContactForm } from '@/lib/actions';
@@ -34,12 +35,17 @@ function SubmitButton() {
   );
 }
 
-export function ContactForm() {
+function ContactFormComponent() {
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  const serviceQuery = searchParams.get('service');
+  
   const [state, formAction] = useActionState(submitContactForm, {
     success: false,
     message: '',
   });
+  
+  const services = ["Web Development", "App Development", "Digital Marketing", "CRM/ERP Solutions", "Custom Software", "Branding & UI/UX", "Other"];
 
   const {
     register,
@@ -48,8 +54,12 @@ export function ContactForm() {
     reset,
     setValue,
     trigger,
+    watch
   } = useForm<FormData>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      service: services.includes(serviceQuery || '') ? serviceQuery : undefined,
+    }
   });
 
   useEffect(() => {
@@ -60,12 +70,12 @@ export function ContactForm() {
         variant: state.success ? 'default' : 'destructive',
       });
       if (state.success) {
-        reset();
+        reset({ service: undefined, name: '', email: '', message: '' });
       }
     }
   }, [state, toast, reset]);
   
-  const services = ["Web Development", "App Development", "Digital Marketing", "CRM/ERP Solutions", "Custom Software", "Other"];
+  const selectedService = watch('service');
 
   return (
     <form action={formAction} className="space-y-6">
@@ -84,7 +94,10 @@ export function ContactForm() {
       
       <div className="space-y-2">
         <Label htmlFor="service">Service of Interest</Label>
-        <Select name="service" onValueChange={(value) => {
+        <Select 
+          name="service" 
+          value={selectedService}
+          onValueChange={(value) => {
             setValue('service', value);
             trigger('service');
         }}>
@@ -109,4 +122,12 @@ export function ContactForm() {
       <SubmitButton />
     </form>
   );
+}
+
+export function ContactForm() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactFormComponent />
+    </Suspense>
+  )
 }
