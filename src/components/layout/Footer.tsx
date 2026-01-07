@@ -45,8 +45,8 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-4 font-semibold">Connect</h3>
-            <p className='text-sm text-gray-400'>info@softvex.in</p>
-            <p className='text-sm text-gray-400'>+91 1234567890</p>
+            <a href="mailto:info@softvex.in" className="text-sm text-gray-400 hover:text-white block">info@softvex.in</a>
+            <a href="mailto:support@softvex.in" className="text-sm text-gray-400 hover:text-white block">support@softvex.in</a>
           </div>
         </div>
         <div className="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-500">
