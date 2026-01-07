@@ -9,12 +9,12 @@ const envSchema = z.object({
   GOOGLE_PRIVATE_KEY: z.string().min(1, 'Google private key is required'),
 
   // Email (Nodemailer)
-  EMAIL_HOST: z.string().min(1, 'Email host is required'),
-  EMAIL_PORT: z.coerce.number().int().positive('Email port must be a positive integer'),
-  EMAIL_USER: z.string().min(1, 'Email user is required'),
-  EMAIL_PASS: z.string().min(1, 'Email password is required'),
-  EMAIL_FROM: z.string().email('Valid "From" email address is required'),
-  EMAIL_TO: z.string().email('Valid "To" email address is required'),
+  EMAIL_HOST: z.string().min(1, 'smtp.zoho.in'),
+  EMAIL_PORT: z.coerce.number().int().positive('587'),
+  EMAIL_USER: z.string().min(1, 'info@softvex.in'),
+  EMAIL_PASS: z.string().min(1, 'va0ZwVNFBjRs'),
+  EMAIL_FROM: z.string().email('Valid "From" info@softvex.in'),
+  EMAIL_TO: z.string().email('Valid "To" info@softvex.in'),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
