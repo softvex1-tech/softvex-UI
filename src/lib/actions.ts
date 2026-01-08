@@ -1,14 +1,13 @@
 'use server';
 
-import { z } from 'zod';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import nodemailer from 'nodemailer';
 import { careerFormSchema, contactFormSchema } from './schema';
-import dotenv from 'dotenv';
 
-dotenv.config({ path: 'src/worksapce/.env' });
-
+/* ======================
+   Types
+====================== */
 type ContactFormState = {
   success: boolean;
   message: string;
@@ -19,47 +18,55 @@ type CareerFormState = {
   message: string;
 };
 
+/* ======================
+   Google Sheet
+====================== */
 function getGoogleSheet() {
-  const serviceAccountAuth = new JWT({
+  const auth = new JWT({
     email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY,
+    key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
 
-  return new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID!, serviceAccountAuth);
+  return new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID!, auth);
 }
+
+/* ======================
+   Email Transport
+====================== */
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: Number(process.env.EMAIL_PORT),
+  secure: Number(process.env.EMAIL_PORT) === 465,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 async function sendEmail(subject: string, html: string): Promise<boolean> {
-    const transport = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: Number(process.env.EMAIL_PORT),
-        secure: process.env.EMAIL_PORT === '465',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
+  try {
+    await transporter.sendMail({
+      from: `Softvex <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_TO,
+      subject,
+      html,
     });
-
-    try {
-        await transport.sendMail({
-            from: `Softvex <${process.env.EMAIL_FROM}>`,
-            to: process.env.EMAIL_TO,
-            subject: subject,
-            html: html,
-        });
-        return true;
-    } catch (error) {
-        console.error('Email sending failed:', error);
-        return false;
-    }
+    return true;
+  } catch (error) {
+    console.error('Email sending failed:', error);
+    return false;
+  }
 }
 
-
+/* ======================
+   Contact Form
+====================== */
 export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  const validatedFields = contactFormSchema.safeParse({
+  const validated = contactFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
     phone: formData.get('phone'),
@@ -67,107 +74,96 @@ export async function submitContactForm(
     message: formData.get('message'),
   });
 
-  if (!validatedFields.success) {
-    return {
-      success: false,
-      message: 'Invalid form data. Please check your entries.',
-    };
+  if (!validated.success) {
+    return { success: false, message: 'Invalid form data.' };
   }
 
-  const { name, email, phone, service, message } = validatedFields.data;
+  const { name, email, phone, service, message } = validated.data;
 
   try {
     const doc = getGoogleSheet();
     await doc.loadInfo();
-    const sheet = doc.sheetsByTitle['Contact Form'];
-    if (!sheet) {
-        throw new Error('"Contact Form" sheet not found in the Google Sheet.');
-    }
-    await sheet.addRow([new Date().toISOString(), name, email, phone || '', service, message]);
 
-    const emailSent = await sendEmail(
+    const sheet = doc.sheetsByTitle['Contact Form'];
+    if (!sheet) throw new Error('Contact Form sheet not found');
+
+    await sheet.addRow({
+      Timestamp: new Date().toISOString(),
+      Name: name,
+      Email: email,
+      Phone: phone || '',
+      Service: service,
+      Message: message,
+    });
+
+    await sendEmail(
       'New Contact Form Submission',
       `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Message:</strong> ${message}</p>
+      <h3>New Contact Form Submission</h3>
+      <p><b>Name:</b> ${name}</p>
+      <p><b>Email:</b> ${email}</p>
+      <p><b>Phone:</b> ${phone || 'N/A'}</p>
+      <p><b>Service:</b> ${service}</p>
+      <p><b>Message:</b> ${message}</p>
       `
     );
 
-    if (!emailSent) {
-      // Still return success to the user, but log the error
-      console.error('Failed to send contact form email, but sheet was updated.');
-    }
-    
-    return {
-      success: true,
-      message: 'Thank you! Your message has been sent successfully.',
-    };
+    return { success: true, message: 'Message sent successfully.' };
   } catch (error) {
-    console.error('Error processing contact form:', error);
-    return {
-      success: false,
-      message: 'Something went wrong on our end. Please try again later.',
-    };
+    console.error('Contact form error:', error);
+    return { success: false, message: 'Server error. Try again later.' };
   }
 }
 
+/* ======================
+   Career Form
+====================== */
 export async function submitCareerForm(
   prevState: CareerFormState,
   formData: FormData
 ): Promise<CareerFormState> {
-  const validatedFields = careerFormSchema.safeParse({
+  const validated = careerFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
     role: formData.get('role'),
     resumeUrl: formData.get('resumeUrl'),
   });
 
-  if (!validatedFields.success) {
-    return {
-      success: false,
-      message: 'Invalid form data. Please check your entries.',
-    };
+  if (!validated.success) {
+    return { success: false, message: 'Invalid form data.' };
   }
 
-  const { name, email, role, resumeUrl } = validatedFields.data;
+  const { name, email, role, resumeUrl } = validated.data;
 
   try {
     const doc = getGoogleSheet();
     await doc.loadInfo();
-    const sheet = doc.sheetsByTitle['Career Form'];
-     if (!sheet) {
-        throw new Error('"Career Form" sheet not found in the Google Sheet.');
-    }
-    await sheet.addRow([new Date().toISOString(), name, email, role, resumeUrl]);
 
-    const emailSent = await sendEmail(
+    const sheet = doc.sheetsByTitle['Career Form'];
+    if (!sheet) throw new Error('Career Form sheet not found');
+
+    await sheet.addRow({
+      Timestamp: new Date().toISOString(),
+      Name: name,
+      Email: email,
+      Role: role,
+      ResumeURL: resumeUrl,
+    });
+
+    await sendEmail(
       `New Job Application: ${role}`,
       `
-        <h3>New Job Application</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Role Applied For:</strong> ${role}</p>
-        <p><strong>Resume URL:</strong> <a href="${resumeUrl}">${resumeUrl}</a></p>
+      <h3>New Job Application</h3>
+      <p><b>Name:</b> ${name}</p>
+      <p><b>Email:</b> ${email}</p>
+      <p><b>Role:</b> ${role}</p>
+      <p><b>Resume:</b> <a href="${resumeUrl}">${resumeUrl}</a></p>
       `
     );
 
-     if (!emailSent) {
-      console.error('Failed to send career form email, but sheet was updated.');
-    }
-
-    return {
-      success: true,
-      message: 'Thank you for your application! We will be in touch shortly.',
-    };
+    return { success: true, message: 'Application submitted successfully.' };
   } catch (error) {
-    console.error('Error processing career form:', error);
-    return {
-      success: false,
-      message: 'Something went wrong on our end. Please try again later.',
-    };
+    console.error('Career form error:', error);
+    return { success: false, message: 'Server error. Try again later.' };
   }
 }
