@@ -1,5 +1,5 @@
 'use server';
-
+import 'dotenv/config';
 import { z } from 'zod';
 import { contactFormSchema, careerFormSchema } from '@/lib/schema';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
