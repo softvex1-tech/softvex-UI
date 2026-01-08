@@ -52,6 +52,7 @@ function getEmailTransport() {
 
 async function sendEmail(subject: string, html: string): Promise<boolean> {
   try {
+    dotenv.config();
     const transporter = getEmailTransport();
     await transporter.sendMail({
       from: `Softvex <${process.env.EMAIL_USER}>`,
@@ -73,6 +74,7 @@ export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  dotenv.config();
   const validated = contactFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -99,7 +101,7 @@ export async function submitContactForm(
       Name: name,
       Email: email,
       Phone: phone || '',
-      Service: service,
+      Service: service || '',
       Message: message,
     });
 
@@ -110,7 +112,7 @@ export async function submitContactForm(
       <p><b>Name:</b> ${name}</p>
       <p><b>Email:</b> ${email}</p>
       <p><b>Phone:</b> ${phone || 'N/A'}</p>
-      <p><b>Service:</b> ${service}</p>
+      <p><b>Service:</b> ${service || 'N/A'}</p>
       <p><b>Message:</b> ${message}</p>
       `
     );
@@ -129,6 +131,7 @@ export async function submitCareerForm(
   prevState: CareerFormState,
   formData: FormData
 ): Promise<CareerFormState> {
+  dotenv.config();
   const validated = careerFormSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
