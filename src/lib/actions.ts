@@ -5,6 +5,9 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import nodemailer from 'nodemailer';
 import { careerFormSchema, contactFormSchema } from './schema';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: 'src/worksapce/.env' });
 
 type ContactFormState = {
   success: boolean;
