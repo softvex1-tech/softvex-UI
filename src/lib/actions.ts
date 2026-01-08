@@ -4,6 +4,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import nodemailer from 'nodemailer';
 import { careerFormSchema, contactFormSchema } from './schema';
+import dotenv from 'dotenv';
 
 /* ======================
    Types
@@ -22,9 +23,10 @@ type CareerFormState = {
    Google Sheet
 ====================== */
 function getGoogleSheet() {
+  dotenv.config();
   const auth = new JWT({
     email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    key: process.env.GOOGLE_PRIVATE_KEY,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
 
@@ -34,18 +36,23 @@ function getGoogleSheet() {
 /* ======================
    Email Transport
 ====================== */
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: Number(process.env.EMAIL_PORT),
-  secure: Number(process.env.EMAIL_PORT) === 465,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+function getEmailTransport() {
+  dotenv.config();
+  return nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: Number(process.env.EMAIL_PORT),
+    secure: Number(process.env.EMAIL_PORT) === 465,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+}
+
 
 async function sendEmail(subject: string, html: string): Promise<boolean> {
   try {
+    const transporter = getEmailTransport();
     await transporter.sendMail({
       from: `Softvex <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
